@@ -1,16 +1,9 @@
-# image_describer
+# Captionify---Image-Voice-Describer
+An AI-Powered Flutter Application that employs the Hugging Face vit-gpt2 model to provide descriptions for uploaded images and then speaks these descriptions out loud for greater accesebility.
 
-A new Flutter project.
+![Screenshot 2024-09-20 000825](https://github.com/user-attachments/assets/cc38b368-a075-46f9-86ee-8fedf076c7bf)
+![Screenshot 2024-09-20 000837](https://github.com/user-attachments/assets/86805d68-b7b8-478f-861b-0c0fcd6ad0c7)
+![Screenshot 2024-09-20 000903](https://github.com/user-attachments/assets/dcb93dfb-454a-4369-bcaa-bdd44332fb2f)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+DEMO VIDEO
+https://github.com/user-attachments/assets/443c4b09-b9e9-401d-aeba-4eb2ad541d21
