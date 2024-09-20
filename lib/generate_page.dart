@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'api_key.dart';
 
 class GenerateCaptionPage extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _GenerateCaptionPageState extends State<GenerateCaptionPage> {
 
   Future<void> generateCaption(File imageFile) async {
     final Uri apiUrl = Uri.parse('https://api-inference.huggingface.co/models/nlpconnect/vit-gpt2-image-captioning');
-    final String apiKey = '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'; 
+    final String apiKey = HUGGING_FACE_USER_TOKEN;
 
     try {
       // Read the image file as bytes
