@@ -147,6 +147,7 @@ class _GenerateDescriptionPage2State extends State<GenerateDescriptionPage2> {
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.purple[200],
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               ),
             ),
             const SizedBox(height: 20),

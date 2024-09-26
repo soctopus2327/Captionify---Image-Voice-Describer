@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Padding(
-                padding: EdgeInsets.only(top: 70.0),
+                padding: EdgeInsets.only(top: 40.0),
                 child: Column(
                   children: [
                     Text(
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 50.0),
+                padding: const EdgeInsets.only(bottom: 40.0),
                 child: Column(
                   children: [
                     ElevatedButton(
@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, '/generate3'); 
                       },
-                      child: const Text('Generate using swin-tiny-patch4'),
+                      child: const Text('Generate using git-base'),
                     ),
                   ],
                 ),

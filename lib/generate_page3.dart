@@ -42,56 +42,95 @@ class _GenerateDescriptionPage3State extends State<GenerateDescriptionPage3> {
   }
 
   Future<void> generateDescription(File imageFile) async {
-    final Uri apiUrl = Uri.parse('https://api-inference.huggingface.co/models/microsoft/swin-tiny-patch4-window7-224');
+    final Uri apiUrl = Uri.parse('https://api-inference.huggingface.co/models/microsoft/git-base');
     final String apiKey = HUGGING_FACE_USER_TOKEN;
 
     try {
-        final bytes = await imageFile.readAsBytes();
-        final response = await http.post(
-            apiUrl,
-            headers: {
-                'Authorization': 'Bearer $apiKey',
-                'Content-Type': 'application/octet-stream',
-            },
-            body: bytes,
-        );
+      final bytes = await imageFile.readAsBytes();
+      final response = await http.post(
+        apiUrl,
+        headers: {
+          'Authorization': 'Bearer $apiKey',
+          'Content-Type': 'application/octet-stream',
+        },
+        body: bytes,
+      );
 
-        print('Response Status Code: ${response.statusCode}');
-        print('Response Data: ${response.body}');
+      print('Response Status Code: ${response.statusCode}');
+      print('Response Data: ${response.body}');
 
-        if (response.statusCode == 200) {
-            final List<dynamic> result = jsonDecode(response.body);
-            if (result.isNotEmpty) {
-                // Extracting the top two labels with their scores
-                String topDescriptions = '';
-                for (int i = 0; i < result.length && i < 2; i++) {
-                    final label = result[i]['label'];
-                    final score = result[i]['score'];
-                    topDescriptions += '${label} ${(score*100).toStringAsFixed(1)} % \n'; /*(Score: ${score.toStringAsFixed(2)})*/
-                }
-                setState(() {
-                    _description = topDescriptions.isNotEmpty ? topDescriptions.trim() : 'No description generated';
-                });
-            } else {
-                setState(() {
-                    _description = 'No description generated';
-                });
-            }
-        } else {
-            setState(() {
-                _description = 'Error generating description: ${response.statusCode} ${response.body}';
-            });
-        }
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
+        setState(() {
+          _description = result[0]['generated_text'] ?? 'No description generated';
+        });
+      } else {
+        setState(() {
+          _description = 'Error generating description: ${response.statusCode} ${response.body}';
+        });
+      }
     } catch (e) {
-        setState(() {
-            _description = 'Exception: $e';
-        });
+      setState(() {
+        _description = 'Exception: $e';
+      });
     } finally {
-        setState(() {
-            _isLoading = false;
-        });
+      setState(() {
+        _isLoading = false;
+      });
     }
-}
+  }
+
+//   Future<void> generateDescription(File imageFile) async {
+//     final Uri apiUrl = Uri.parse('https://api-inference.huggingface.co/models/microsoft/swin-tiny-patch4-window7-224');
+//     final String apiKey = HUGGING_FACE_USER_TOKEN;
+
+//     try {
+//         final bytes = await imageFile.readAsBytes();
+//         final response = await http.post(
+//             apiUrl,
+//             headers: {
+//                 'Authorization': 'Bearer $apiKey',
+//                 'Content-Type': 'application/octet-stream',
+//             },
+//             body: bytes,
+//         );
+
+//         print('Response Status Code: ${response.statusCode}');
+//         print('Response Data: ${response.body}');
+
+//         if (response.statusCode == 200) {
+//             final List<dynamic> result = jsonDecode(response.body);
+//             if (result.isNotEmpty) {
+//                 // Extracting the top two labels with their scores
+//                 String topDescriptions = '';
+//                 for (int i = 0; i < result.length && i < 2; i++) {
+//                     final label = result[i]['label'];
+//                     final score = result[i]['score'];
+//                     topDescriptions += '${label} ${(score*100).toStringAsFixed(1)} % \n'; /*(Score: ${score.toStringAsFixed(2)})*/
+//                 }
+//                 setState(() {
+//                     _description = topDescriptions.isNotEmpty ? topDescriptions.trim() : 'No description generated';
+//                 });
+//             } else {
+//                 setState(() {
+//                     _description = 'No description generated';
+//                 });
+//             }
+//         } else {
+//             setState(() {
+//                 _description = 'Error generating description: ${response.statusCode} ${response.body}';
+//             });
+//         }
+//     } catch (e) {
+//         setState(() {
+//             _description = 'Exception: $e';
+//         });
+//     } finally {
+//         setState(() {
+//             _isLoading = false;
+//         });
+//     }
+// }
 
 
 
@@ -116,7 +155,7 @@ class _GenerateDescriptionPage3State extends State<GenerateDescriptionPage3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('swin-tiny-patch4-window7-224', style: TextStyle(color: Colors.white)),
+        title: Text('git-base', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.purple[200],
       ),
       body: Padding(
@@ -162,6 +201,7 @@ class _GenerateDescriptionPage3State extends State<GenerateDescriptionPage3> {
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.purple[200],
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               ),
             ),
             const SizedBox(height: 20),
