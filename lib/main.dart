@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'generate_page.dart';
+import 'generate_page2.dart'; 
+import 'generate_page3.dart'; 
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,6 +27,8 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: {
         '/generate': (context) => GenerateCaptionPage(),
+        '/generate2': (content) => GenerateDescriptionPage2(),
+        '/generate3': (content) => GenerateDescriptionPage3(),
       },
     );
   }
