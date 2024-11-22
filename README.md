@@ -5,7 +5,7 @@ The models used are:
 
 - vit-gpt-2
 + blip-image-captioning
-* swin-tiny-patch4-window7-224
+* git-base
 
 ### Demo Video
 https://github.com/user-attachments/assets/261d99f7-40b3-4877-9c3e-b0584eb52fcc
